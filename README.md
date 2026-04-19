@@ -34,7 +34,9 @@ taskmanager/
 │       ├── user.py          # Pydantic user schemas
 │       └── task.py          # Pydantic task schemas
 ├── frontend/
-│   └── index.html           # Single-page frontend
+│        |__index.html  #code structure 
+|        |__styles.css  # styling color for the frontend UI
+|        └── app.js  # the app.js manages the  auth and registration request /API
 ├── tests/
 │   └── test_api.py          # Pytest test suite
 ├── .env.example
