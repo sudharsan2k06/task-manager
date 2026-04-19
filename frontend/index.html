@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">Task<span>Flow</span></div>
+  <div id="userInfo" style="display:none">
+    <span id="userEmail"></span>
+    <button id="logoutBtn" onclick="logout()">Logout</button>
+  </div>
+</nav>
+
+<!-- AUTH PAGE -->
+<div id="authPage" class="page active">
+  <div class="auth-card">
+    <h2>Welcome back 👋</h2>
+    <p>Manage your tasks, stay on track.</p>
+
+    <div class="tab-row">
+      <div class="tab active" onclick="switchTab('login')">Login</div>
+      <div class="tab" onclick="switchTab('register')">Register</div>
+    </div>
+
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="authEmail" placeholder="you@example.com" />
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="authPassword" placeholder="••••••••" />
+    </div>
+
+    <button class="btn btn-primary" id="authBtn" onclick="handleAuth()">
+      <span class="btn-text" id="authBtnText">Login</span>
+      <div class="spinner"></div>
+    </button>
+
+    <div id="authMsg" class="msg"></div>
+  </div>
+</div>
+
+<!-- DASHBOARD PAGE -->
+<div id="dashPage" class="page">
+
+  <div class="stats-row">
+    <div class="stat-card total">
+      <div class="label">Total Tasks</div>
+      <div class="value" id="statTotal">0</div>
+    </div>
+    <div class="stat-card done">
+      <div class="label">Completed</div>
+      <div class="value" id="statDone">0</div>
+    </div>
+    <div class="stat-card pending">
+      <div class="label">Pending</div>
+      <div class="value" id="statPending">0</div>
+    </div>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-label">
+      <span>Progress</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressBar" style="width:0%"></div>
+    </div>
+  </div>
+
+  <div class="add-form">
+    <h3>+ New Task</h3>
+    <div class="add-row">
+      <input type="text" id="taskTitle" placeholder="What needs to be done?" maxlength="200" />
+      <button class="btn btn-primary" id="addBtn" onclick="addTask()">
+        <span class="btn-text">Add Task</span>
+        <div class="spinner"></div>
+      </button>
+    </div>
+  </div>
+
+  <div class="filters">
+    <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+    <button class="filter-btn" onclick="setFilter('false', this)">Pending</button>
+    <button class="filter-btn" onclick="setFilter('true', this)">Completed</button>
+  </div>
+
+  <div id="taskList"></div>
+  <div id="pagination" class="pagination"></div>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
